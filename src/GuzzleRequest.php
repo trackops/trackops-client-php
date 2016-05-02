@@ -2,9 +2,9 @@
 namespace Trackops\Api;
 
 use GuzzleHttp\Exception\TransferException;
-use GuzzleHttp\Client;
+use GuzzleHttp\Client as GuzzleClient;
 use Trackops\Api\RequestInterface;
-use Trackops\Exception\RequestException;
+use Trackops\Api\Exception\RequestException;
 
 class GuzzleRequest implements RequestInterface
 {
@@ -81,7 +81,7 @@ class GuzzleRequest implements RequestInterface
     protected function execute($method, $path, array $params = [])
     {
         try {
-            $client = new Client(['base_uri' => $this->url.'/']);
+            $client = new GuzzleClient(['base_uri' => $this->url.'/']);
             $response = $client->request($method, $this->sanitizePath($path), [
                 'headers' => ['Accept' => 'application/json'],
                 'auth'    => [$this->username, $this->token],

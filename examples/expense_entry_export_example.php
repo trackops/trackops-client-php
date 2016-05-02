@@ -10,7 +10,7 @@
 
 require __DIR__.'/../vendor/autoload.php';
 
-Use Trackops\Trackops;
+Use Trackops\Api\Client;
 
 date_default_timezone_set('UTC');
 
