@@ -50,7 +50,7 @@ class GuzzleRequest implements RequestInterface
      *
      * @param string $path
      * @param array $params
-     * @return Trackops\Api\GuzzleResponse
+     * @return \Trackops\Api\GuzzleResponse
      */
     public function get($path, array $params = [])
     {
@@ -62,7 +62,7 @@ class GuzzleRequest implements RequestInterface
      *
      * @param string $path
      * @param array $params
-     * @return Trackops\Api\GuzzleResponse
+     * @return \Trackops\Api\GuzzleResponse
      */
     public function count($path, array $params = [])
     {
@@ -76,7 +76,7 @@ class GuzzleRequest implements RequestInterface
      * @param string $path
      * @param array $params
      * @return \Trackops\Api\GuzzleResponse
-     * @throws \Trackops\Exception\RequestException
+     * @throws \Trackops\Api\Exception\RequestException
      */
     protected function execute($method, $path, array $params = [])
     {
