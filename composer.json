@@ -1,7 +1,7 @@
 {
     "name": "trackops/trackops-client-php",
     "description": "PHP Client for Trackops REST API. See http://support.trackops.com",
-    "license": "Apache License Version 2.0",
+    "license": "MIT",
     "homepage": "https://github.com/trackops/trackops-client-php",
     "require": {
         "php": ">=5.5.0",
