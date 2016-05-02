@@ -1,4 +1,5 @@
 <?php
+
 namespace Trackops\Api;
 
 use GuzzleHttp\Exception\TransferException;

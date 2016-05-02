@@ -1,4 +1,5 @@
 <?php
+
 namespace Trackops\Api;
 
 interface RequestInterface

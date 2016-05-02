@@ -1,4 +1,5 @@
 <?php
+
 namespace Trackops\Api;
 
 use Trackops\Api\ResponseInterface;

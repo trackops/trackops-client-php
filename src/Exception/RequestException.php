@@ -1,5 +1,6 @@
 <?php
-namespace Trackops\Exception;
+
+namespace Trackops\Api\Exception;
 
 class RequestException extends \Exception
 {
