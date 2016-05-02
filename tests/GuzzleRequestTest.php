@@ -1,5 +1,6 @@
 <?php
-namespace Trackops\Test;
+
+namespace Trackops\Api\Test;
 
 use Trackops\Api\GuzzleRequest;
 
