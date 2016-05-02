@@ -4,7 +4,7 @@
 The **Trackops API Client for PHP** provides an easy to use set of tools to quickly access your [Trackops](https://www.trackops.com) data from any PHP application.
 
 # Installation
-[PHP](https://php.net) 5.5+ (compiled with cURL) and [Composer](https://getcomposer.org) are required for installation.
+[PHP](https://php.net) 5.5+ (compiled with [cURL](http://php.net/manual/en/book.curl.php)) and [Composer](https://getcomposer.org) are required for installation.
 
 If you don't already have composer installed, you can quickly do so by running this command from your project root directory:
 ```
