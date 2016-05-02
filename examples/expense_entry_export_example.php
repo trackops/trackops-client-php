@@ -42,7 +42,7 @@ echo ' > Beginning export at '.$startDate->format('Y-m-d H:i:s')."\n\n";
 // Open a new file pointer to capture the exported results
 $fp = fopen(__DIR__.'/'.$params['from'].'-'.$params['to'].'-expense-export.csv', 'wb');
 
-// Create an infinte loop until we manually break the cycle.
+// Create an infinite loop until we manually break the cycle.
 while (1) {
     echo sprintf(' > Processing page %s', $params['page'])."\n";
 
