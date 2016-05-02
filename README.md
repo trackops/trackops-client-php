@@ -39,9 +39,9 @@ Use the `get()` method to retrieve a set of records
 // require the composer autoloader
 require 'vendor/autoload.php';
 
-use Trackops\Trackops;
+use Trackops\Api\Client;
 
-$api = new Trackops('subdomain', 'username', 'apitoken');
+$api = new Client('subdomain', 'username', 'apitoken');
 $records = $api->createRequest()->get('cases')->toArray();
 ```
 
@@ -51,9 +51,9 @@ We're passing a `$params` variable with an array of query parameters to this req
 ```php
 require 'vendor/autoload.php';
 
-use Trackops\Trackops;
+use Trackops\Api\Client;
 
-$api = new Trackops('subdomain', 'username', 'apitoken');
+$api = new Client('subdomain', 'username', 'apitoken');
 $params = ['from' => '2016-01-01', 'to' => '2016-01-31', 'dir' => 'asc', 'per_page' => 1, 'page' => 1];
 $records = $api->createRequest()->get('cases', $params)->toArray();
 ```
@@ -65,9 +65,9 @@ Use the `count()` method to quickly get the total `record_count` and `page_count
 ```php
 require 'vendor/autoload.php';
 
-use Trackops\Trackops;
+use Trackops\Api\Client;
 
-$api = new Trackops('subdomain', 'username', 'apitoken');
+$api = new Client('subdomain', 'username', 'apitoken');
 $params = ['from' => '2016-01-01', 'to' => '2016-01-31'];
 $records = $api->createRequest()->count('cases', $params)->toArray();
 ```
