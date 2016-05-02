@@ -11,7 +11,7 @@ If you don't already have composer installed, you can quickly do so by running t
 curl -sS https://getcomposer.org/installer | php
 ```
 
-Once you have composer, install the trackops/trackops-client-php package from Packagist, like so:
+Once you have composer, install the [trackops/trackops-client-php package](https://packagist.org/packages/trackops/trackops-client-php) from [Packagist](https://packagist.org/), like so:
 ```
 composer require trackops/trackops-client-php
 ```
