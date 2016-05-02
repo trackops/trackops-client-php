@@ -1,4 +1,12 @@
 <?php
+/**
+ * This example demonstrates (in a very rudimentary way) how to export a list
+ * of expense details to a CSV file.
+ *
+ * Please note, this example is for educational purposes only, and should not be
+ * considered quality production code.
+ */
+
 
 require __DIR__.'/../vendor/autoload.php';
 
@@ -42,24 +50,28 @@ while (1) {
     $records = $api->createRequest()->get('expense/entries', $params)->toArray();
     foreach ($records as $record)
     {
-        // Create an array of values that will be the same on every row for this entry
+        // Create an array of values, pulled from the expense entry,
+        // that will be the same on every row of the detailed line items
         $entry = [
-           $record['formatted_entry_number'],
-           $record['entry_date'],
-           $record['User']['name'],
+           $record['formatted_entry_number'], // expense entry number
+           $record['entry_date'], // date of the expenses
+           $record['User']['name'], // the person these expenses are for
         ];
 
+        // Loop through each expense detail and extract the necessary data we
+        // want to capture in our export.
         foreach ($record['ExpenseDetails'] as $detail) {
             $details = [
-              $detail['FinanceItem']['name'],
-              $detail['notes'],
-              $detail['rate'],
-              $detail['quantity'],
-              $detail['total'],
+              $detail['FinanceItem']['expense_alias'], // Expense item name
+              $detail['notes'], // Line item notes for this expense detail
+              $detail['rate'], // The rate of this expense detail
+              $detail['quantity'], // The quanity of the expense detail
+              $detail['total'], // The total (rate * quantity) for this line
             ];
 
-            // For each detail, merge the entry values with the current detail values
-            // then write them to the file pointer.
+            // For each detail, merge the entry values with the current
+            // line item (expense detail) values, to generate a single line.
+            // Then write that line to the file using fputcsv().
             fputcsv($fp, array_merge($entry, $details));
         }
     }
