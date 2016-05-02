@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This example demonstrates (in a very rudimentary way) how to export a list
  * of expense details to a CSV file.
@@ -7,10 +8,9 @@
  * considered quality production code.
  */
 
-
 require __DIR__.'/../vendor/autoload.php';
 
-Use Trackops\Api\Client;
+use Trackops\Api\Client;
 
 date_default_timezone_set('UTC');
 
@@ -42,7 +42,7 @@ echo ' > Beginning export at '.$startDate->format('Y-m-d H:i:s')."\n\n";
 // Open a new file pointer to capture the exported results
 $fp = fopen(__DIR__.'/'.$params['from'].'-'.$params['to'].'-expense-export.csv', 'wb');
 
-// Create an infinte loop until we manually break the cycle.
+// Create an infinite loop until we manually break the cycle.
 while (1) {
     echo sprintf(' > Processing page %s', $params['page'])."\n";
 

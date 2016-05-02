@@ -1,7 +1,6 @@
 <?php
-namespace Trackops\Api;
 
-use Trackops\Api\GuzzleRequest;
+namespace Trackops\Api;
 
 class Client
 {

@@ -2,9 +2,8 @@
 
 namespace Trackops\Api;
 
-use GuzzleHttp\Exception\TransferException;
 use GuzzleHttp\Client as GuzzleClient;
-use Trackops\Api\RequestInterface;
+use GuzzleHttp\Exception\TransferException;
 use Trackops\Api\Exception\RequestException;
 
 class GuzzleRequest implements RequestInterface
@@ -51,7 +50,7 @@ class GuzzleRequest implements RequestInterface
      *
      * @param string $path
      * @param array $params
-     * @return Trackops\Api\GuzzleResponse
+     * @return \Trackops\Api\GuzzleResponse
      */
     public function get($path, array $params = [])
     {
@@ -63,7 +62,7 @@ class GuzzleRequest implements RequestInterface
      *
      * @param string $path
      * @param array $params
-     * @return Trackops\Api\GuzzleResponse
+     * @return \Trackops\Api\GuzzleResponse
      */
     public function count($path, array $params = [])
     {
@@ -77,7 +76,7 @@ class GuzzleRequest implements RequestInterface
      * @param string $path
      * @param array $params
      * @return \Trackops\Api\GuzzleResponse
-     * @throws \Trackops\Exception\RequestException
+     * @throws \Trackops\Api\Exception\RequestException
      */
     protected function execute($method, $path, array $params = [])
     {
@@ -91,6 +90,7 @@ class GuzzleRequest implements RequestInterface
         } catch (TransferException $e) {
             throw new RequestException($e->getMessage());
         }
+
         return new GuzzleResponse($response);
     }
 
