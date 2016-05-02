@@ -7,7 +7,7 @@ Use Trackops\Trackops;
 date_default_timezone_set('UTC');
 
 // Create a new API Client using the customer subdomain, username, and api token
-$api = new Trackops('dev2', 'iricketson1', '0e5b5ff6-67ce-5b47-b5a4-8bd2253a10e7');
+$api = new Trackops('subdomain', 'username', 'apitoken');
 
 // define the parameters we will use in our search
 $params = [
