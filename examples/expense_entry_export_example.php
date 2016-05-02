@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This example demonstrates (in a very rudimentary way) how to export a list
  * of expense details to a CSV file.
@@ -6,7 +7,6 @@
  * Please note, this example is for educational purposes only, and should not be
  * considered quality production code.
  */
-
 
 require __DIR__.'/../vendor/autoload.php';
 

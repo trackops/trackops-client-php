@@ -90,6 +90,7 @@ class GuzzleRequest implements RequestInterface
         } catch (TransferException $e) {
             throw new RequestException($e->getMessage());
         }
+
         return new GuzzleResponse($response);
     }
 
