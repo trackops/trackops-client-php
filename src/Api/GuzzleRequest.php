@@ -66,7 +66,7 @@ class GuzzleRequest implements RequestInterface
      */
     public function count($path, array $params = [])
     {
-        return $this->execute('GET', $path, array_merge($params, ['mode' => 'count']));
+        return $this->get($path, array_merge($params, ['mode' => 'count']));
     }
 
     /**
