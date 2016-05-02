@@ -4,7 +4,6 @@ namespace Trackops\Api;
 
 use GuzzleHttp\Exception\TransferException;
 use GuzzleHttp\Client as GuzzleClient;
-use Trackops\Api\RequestInterface;
 use Trackops\Api\Exception\RequestException;
 
 class GuzzleRequest implements RequestInterface

@@ -1,8 +1,6 @@
 <?php
 namespace Trackops\Api;
 
-use Trackops\Api\GuzzleRequest;
-
 class Client
 {
     protected $subdomain;

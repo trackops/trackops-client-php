@@ -2,8 +2,6 @@
 
 namespace Trackops\Api;
 
-use Trackops\Api\ResponseInterface;
-
 class GuzzleResponse implements ResponseInterface
 {
     protected $response;
