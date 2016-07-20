@@ -14,7 +14,7 @@ class GuzzleRequest implements RequestInterface
      *
      * @var string
      */
-    protected $url = 'http://%subdomain%.viewcases.com/api/v1';
+    protected $url = 'https://%subdomain%.viewcases.com/api/v1';
 
     /**
      * The API component that is to be called (e.g. cases, expense/entries)
