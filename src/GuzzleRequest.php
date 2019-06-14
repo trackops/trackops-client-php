@@ -14,7 +14,14 @@ class GuzzleRequest implements RequestInterface
      *
      * @var string
      */
-    protected $url = 'https://%subdomain%.viewcases.com/api/v1';
+    protected $url = 'https://%subdomain%.viewcases.com/api';
+
+  /**
+   * The Api Version used in API Calls. The version defaults to the current API version used in this release.
+   *
+   * @var string
+   */
+    protected $version = 'v1';
 
     /**
      * The API component that is to be called (e.g. cases, expense/entries)
@@ -38,11 +45,14 @@ class GuzzleRequest implements RequestInterface
      */
     protected $token;
 
-    public function __construct($subdomain, $username, $token)
+    public function __construct($subdomain, $username, $token, $version = null)
     {
         $this->url = str_replace('%subdomain%', $subdomain, $this->url);
         $this->username = $username.'/token';
         $this->token = $token;
+        if ($version) {
+          $this->version = $version;
+        }
     }
 
     /**
@@ -54,7 +64,28 @@ class GuzzleRequest implements RequestInterface
      */
     public function get($path, array $params = [])
     {
-        return $this->execute('GET', $path, $params);
+        return $this->execute('GET', $path, [
+            'headers' => ['Accept' => 'application/json'],
+            'query' => $params
+        ]);
+    }
+
+    /**
+     * Shortcut for execute() with a POST method
+     *
+     * @param string $path
+     * @param string $body
+     * @return \Trackops\Api\GuzzleResponse
+     */
+    public function post($path, $body)
+    {
+        return $this->execute('POST', $path, [
+            'headers' => [
+              'Accept' => 'application/json',
+              'Content-Type' => '/application/json',
+            ],
+            'body' => $body
+        ]);
     }
 
     /**
@@ -78,15 +109,15 @@ class GuzzleRequest implements RequestInterface
      * @return \Trackops\Api\GuzzleResponse
      * @throws \Trackops\Api\Exception\RequestException
      */
-    protected function execute($method, $path, array $params = [])
+    protected function execute($method, $path, array $options = array())
     {
+        $options = array_merge($options, [
+            'auth' => [$this->username, $this->token],
+        ]);
+
         try {
-            $client = new GuzzleClient(['base_uri' => $this->url.'/']);
-            $response = $client->request($method, $this->sanitizePath($path), [
-                'headers' => ['Accept' => 'application/json'],
-                'auth'    => [$this->username, $this->token],
-                'query'   => $params,
-            ]);
+            $client = new GuzzleClient(['base_uri' => $this->url.'/'.$this->version.'/']);
+            $response = $client->request($method, $this->sanitizePath($path), $options);
         } catch (TransferException $e) {
             throw new RequestException($e->getMessage());
         }
