@@ -20,7 +20,7 @@ Alternatively, you can manually add trackops/trackops-client-php to your compose
 ```json
 {
     "require": {
-        "trackops/trackops-client-php": "~0.1"
+        "trackops/trackops-client-php": "~0.2"
     }
 }
 ```
