@@ -82,7 +82,7 @@ $request = ['casefile' => [
 ]];
 
 // Call out to the API using a json encoded request body as defined
-$response = $api->createRequest()->post('cases', json_encode($request));
+$response = $api->createRequest()->post('cases', $request);
 
 echo $response."\n\n";
 exit;

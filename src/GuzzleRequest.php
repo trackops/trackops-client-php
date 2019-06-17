@@ -77,15 +77,9 @@ class GuzzleRequest implements RequestInterface
      * @param string $body
      * @return \Trackops\Api\GuzzleResponse
      */
-    public function post($path, $body)
+    public function post($path, array $params)
     {
-        return $this->execute('POST', $path, [
-            'headers' => [
-              'Accept' => 'application/json',
-              'Content-Type' => '/application/json',
-            ],
-            'body' => $body
-        ]);
+        return $this->execute('POST', $path, ['json' => $params]);
     }
 
     /**
