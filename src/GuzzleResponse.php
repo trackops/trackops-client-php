@@ -40,4 +40,14 @@ class GuzzleResponse implements ResponseInterface
     {
         return json_decode($this->getBody(), true);
     }
+
+    /**
+     * Shortcut method for getting the raw body of the response.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getBody();
+    }
 }
