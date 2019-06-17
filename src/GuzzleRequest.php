@@ -2,12 +2,27 @@
 
 namespace Trackops\Api;
 
+use GuzzleHttp;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\TransferException;
 use Trackops\Api\Exception\RequestException;
 
 class GuzzleRequest implements RequestInterface
 {
+    /**
+     * The name of this Trackops API client package.
+     *
+     * @var string
+     */
+    const TRACKOPS_CLIENT_NAME = 'trackops-client-php';
+
+    /**
+     * The release tag for this version of the Trackops API client package.
+     *
+     * @var string
+     */
+    const TRACKOPS_CLIENT_VERSION = '0.2.0';
+
     /**
      * The URL used to run API calls.  The %subdomain% variable will be
      * replaced with the actual subdomain passed at runtime.
@@ -66,7 +81,6 @@ class GuzzleRequest implements RequestInterface
     public function get($path, array $params = [])
     {
         return $this->execute('GET', $path, [
-            'headers' => ['Accept' => 'application/json'],
             'query' => $params
         ]);
     }
@@ -111,6 +125,11 @@ class GuzzleRequest implements RequestInterface
         $options = array_merge($options, [
             'auth' => [$this->username, $this->token],
         ]);
+
+        $options['headers'] = [
+            'Accept' => 'application/json',
+            'User-Agent' => self::TRACKOPS_CLIENT_NAME.'/'.self::TRACKOPS_CLIENT_VERSION.' '.GuzzleHttp\default_user_agent()
+        ];
 
         try {
             $client = new GuzzleClient(['base_uri' => $this->url.'/'.$this->version.'/']);
