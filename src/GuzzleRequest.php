@@ -16,11 +16,11 @@ class GuzzleRequest implements RequestInterface
      */
     protected $url = 'https://%subdomain%.viewcases.com/api';
 
-  /**
-   * The Api Version used in API Calls. The version defaults to the current API version used in this release.
-   *
-   * @var string
-   */
+    /**
+     * The Api Version used in API Calls. The version defaults to the current API version used in this release.
+     *
+     * @var string
+     */
     protected $version = 'v1';
 
     /**
@@ -51,7 +51,7 @@ class GuzzleRequest implements RequestInterface
         $this->username = $username.'/token';
         $this->token = $token;
         if ($version) {
-          $this->version = $version;
+            $this->version = $version;
         }
     }
 
@@ -60,7 +60,8 @@ class GuzzleRequest implements RequestInterface
      *
      * @param string $path
      * @param array $params
-     * @return \Trackops\Api\GuzzleResponse
+     * @return GuzzleResponse
+     * @throws RequestException
      */
     public function get($path, array $params = [])
     {
@@ -74,8 +75,9 @@ class GuzzleRequest implements RequestInterface
      * Shortcut for execute() with a POST method
      *
      * @param string $path
-     * @param string $body
-     * @return \Trackops\Api\GuzzleResponse
+     * @param array $params
+     * @return GuzzleResponse
+     * @throws RequestException
      */
     public function post($path, array $params)
     {
@@ -87,7 +89,8 @@ class GuzzleRequest implements RequestInterface
      *
      * @param string $path
      * @param array $params
-     * @return \Trackops\Api\GuzzleResponse
+     * @return GuzzleResponse
+     * @throws RequestException
      */
     public function count($path, array $params = [])
     {
@@ -99,11 +102,11 @@ class GuzzleRequest implements RequestInterface
      *
      * @param string $method
      * @param string $path
-     * @param array $params
-     * @return \Trackops\Api\GuzzleResponse
-     * @throws \Trackops\Api\Exception\RequestException
+     * @param array $options
+     * @return GuzzleResponse
+     * @throws RequestException
      */
-    protected function execute($method, $path, array $options = array())
+    protected function execute($method, $path, array $options = [])
     {
         $options = array_merge($options, [
             'auth' => [$this->username, $this->token],
