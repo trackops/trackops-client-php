@@ -11,6 +11,7 @@
 require __DIR__.'/../vendor/autoload.php';
 
 use Trackops\Api\Client;
+use Trackops\Api\Exception\RequestException;
 
 date_default_timezone_set('UTC');
 
@@ -83,7 +84,12 @@ $request = ['casefile' => [
 ]];
 
 // Call out to the API using a json encoded request body as defined.
-$response = $api->createRequest()->post('cases', $request);
+try {
+  $response = $api->createRequest()->post('cases', $request);
+} catch (RequestException $e) {
+  echo $e->getMessage();
+  exit;
+}
 
 echo $response."\n\n";
 exit;
