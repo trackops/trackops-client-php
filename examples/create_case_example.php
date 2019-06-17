@@ -14,10 +14,11 @@ use Trackops\Api\Client;
 
 date_default_timezone_set('UTC');
 
-// Create a new API Client using the customer subdomain, username, and api token
+// Create a new API Client using the customer subdomain, username, and api token.
 $api = new Client(getenv('TRACKOPS_API_SUBDOMAIN'), getenv('TRACKOPS_API_USERNAME'), getenv('TRACKOPS_API_TOKEN'));
 
-// define the parameters we will use in our request
+// Define the parameters we will use in our request.
+// Note: THESE ARE SAMPLE PARAMETERS, and will not work in your implementation without review.
 $request = ['casefile' => [
     'case_type_id' => 1,
     'client_id' => 4,
@@ -81,7 +82,7 @@ $request = ['casefile' => [
     ],
 ]];
 
-// Call out to the API using a json encoded request body as defined
+// Call out to the API using a json encoded request body as defined.
 $response = $api->createRequest()->post('cases', $request);
 
 echo $response."\n\n";
